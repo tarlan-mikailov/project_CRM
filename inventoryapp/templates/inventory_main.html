@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Inventory</title>
+{% endblock %}
+
+{% block inventory %}
+<a class="nav-link active" aria-current="page" href="{% url 'CommodityList' %}">Inventory</a>
+{% endblock %}
+
+{% block container %}
+<div id="third_row" class="row">
+    <div class="col-lg-2">
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4 mb-4">
+                    {% block com_table %}
+                    <a href="{% url 'CommodityList' %}" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Commodities</span>
+                    </a>
+                    {% endblock %}
+                    {% block ord_table %}
+                    <a href="{% url 'OrderList' %}" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Orders</span>
+                    </a>
+                    {% endblock %}
+                    {% block order %}
+                    <a href="{% url 'OrderCreate' %}" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>New order</span>
+                    </a>
+                    {% endblock %}
+                    {% block commodity %}
+                    <a href="{% url 'CommodityCreate' %}" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Commodity</span>
+                    </a>
+                    {% endblock %}
+                </div>
+            </div>
+        </nav>
+
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4 mb-4">
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Analytics</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple" >
+                        <span>SEO</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4 mb-4">
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <span>Filters</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple" >
+                        <span>Order</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+    </div>
+    <div class="col-lg-10">
+{% block content %}
+
+{% endblock %}
+    </div>
+</div>
+{% endblock %}

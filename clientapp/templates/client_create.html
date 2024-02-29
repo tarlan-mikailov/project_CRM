@@ -1,0 +1,66 @@
+{% extends 'client_main.html' %}
+
+{% load static %}
+
+{% block bt_ins %}
+<a href="{% url 'ClientCreate' %}" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
+    <span>Add client</span>
+</a>
+{% endblock %}
+
+{% block content %}
+<form  method="POST" enctype="multipart/form-data" id="form">
+    {% csrf_token %}
+    <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
+        <div class="row mb-3">
+            <label for="{{ form.first_name.id_for_label }}" class="col-lg-3 col-form-label">First name</label>
+            <div class="col-sm-4">
+                {{ form.first_name }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="{{ form.last_name.id_for_label }}" class="col-lg-3 col-form-label">Last name</label>
+            <div class="col-sm-4">
+                {{ form.last_name }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="{{ form.phone.id_for_label }}" class="col-lg-3 col-form-label">Phone</label>
+            <div class="col-sm-4">
+                {{ form.phone }}
+            <small id="phoneHelpBlock" class="form-text text-muted">Enter 9 symbols</small>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="{{ form.email.id_for_label }}" class="col-lg-3 col-form-label">Email</label>
+            <div class="col-sm-4">
+                {{ form.email }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="{{ form.birthday.id_for_label }}" class="col-lg-3 col-form-label">Birthday</label>
+            <div class="col-sm-4">
+                {{ form.birthday }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="{{ form.image.id_for_label }}" class="col-lg-3 col-form-label">Image</label>
+            <div class="col-sm-4">
+                {{ form.image }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="{{ form.comment.id_for_label }}" class="col-lg-3 col-form-label">Comment</label>
+            <div class="col-sm-4">
+                {{ form.comment }}
+            </div>
+        </div>
+    </div>
+    <input id="submit" type="submit" value="Submit" class="btn btn-success">
+</form>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'js/form_submiter.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/phone_number_formater.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'serviceapp/service_main.html' %}
+
+{% block service1 %}
+<button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-primary">Service</button>
+{% endblock %}
+
+{% block content %}
+<table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
+    <h2 class="text-center">{{ data_service.name }}</h2>
+    <tr>
+        <th>Resource</th>
+    </tr>
+{% for item in data_resource %}
+    <tr type="button" class='clickable-row' onclick="window.location='{% url 'detail_resource' item.id %}'">
+        <td>{{ item.name }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% if perms.serviceapp.update_service %}
+    <button onclick="window.location.href='{% url 'update_service' data_service.id %}';" type="button" class="btn btn-primary">Update service</button>
+{% endif %}
+    <button onclick="window.location.href='{% url 'add_resource_for_service' data_service.id %}';" type="button" class="btn btn-success">Add resource</button>
+{% if perms.serviceapp.delete_service %}
+    <button onclick="window.location.href='{% url 'delete_service' data_service.id %}';" type="button" class="btn btn-danger">Delete service</button>
+{% endif %}
+{% endblock %}

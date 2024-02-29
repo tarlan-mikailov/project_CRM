@@ -1,0 +1,45 @@
+{% extends 'client_main.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-4 shadow-lg p-3 mb-4 bg-body-tertiary">
+        <h2>{{object.client.full_name}}</h2>
+        <p>Phone number: {{object.client.phone}}</p>
+        <p>Email: {{object.client.email}}</p>
+        <p>Birthday: {{object.client.birthday|date:"d-m-Y"}}</p>
+        <p>Comments: {{object.client.comment}}</p>
+        <p>Records: 
+            {% for item in object.records %}
+            {{item.date|date:"d-m-Y"}} at {{item.time_slot}} PM, staff {{item.id_staff.first_name}} {{item.id_staff.last_name}} |
+            {% endfor %}
+        </p>
+    </div>
+    <div id="carouselExample" class="col-lg-8 mb-4 carousel slide">
+        <div class="carousel-inner">
+            {% for item in object.photo %}
+            <div class="carousel-item">
+                <img async class="d-block w-100" src="{{ MEDIA_URL }}{{item.image}}">
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" onclick="plusSlides(-1)" type="button">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" onclick="plusSlides(1)" type="button">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+{% if perms.clientapp.change_client %}
+    <button onclick="window.location.href='{% url 'ClientUpdate' object.client.id %}';" type="button" class="btn btn-primary">Update client</button>
+{% endif %}
+{% if perms.clientapp.delete_client %}
+    <button onclick="window.location.href='{% url 'ClientDelete' object.client.id %}';" type="button" class="btn btn-danger">Delete client</button>
+{% endif %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
+{% endblock %}

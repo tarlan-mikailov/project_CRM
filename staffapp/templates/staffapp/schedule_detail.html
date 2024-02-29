@@ -1,0 +1,18 @@
+{% extends 'staffapp/staff_main.html' %}
+
+{% block bt_all %}
+<button onclick="window.location.href='{% url 'all_staff' %}';" type="button" class="btn btn-secondary">All Staff</button>
+{% endblock %}
+
+{% block content %}
+<div class="shadow-lg p-3 mb-4 bg-body-tertiary">
+    <h2>Schedule for {{ object.id_staff }} on {{ object.date|date:"d b Y" }}</h2>
+    <p>Start time: {{ object.start_time|time:"H:i" }}</p>
+    <p>End time: {{ object.end_time|time:"H:i" }}</p>
+</div>
+<div>
+    {% if perms.staffapp.delete_schedule %}
+        <button onclick="window.location.href='{% url 'delete_schedule' object.pk %}';" type="button" class="btn btn-danger">Delete schedule</button>
+    {% endif %}
+</div>
+{% endblock %}

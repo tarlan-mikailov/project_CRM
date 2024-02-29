@@ -1,0 +1,6 @@
+{% extends 'client_main.html' %}
+
+{% block content %}
+<p class="alert alert-success">Data submitted successfully</p>
+<button onclick="window.location.href='{% url 'ClientCreate' %}';" type="button" class="btn btn-primary">Add another client</button>
+{% endblock %}

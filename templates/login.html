@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div class="row" id="login">
+    <form action="{% url 'loginSite' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Login" name="login">
+            <label for="floatingInput">Login</label>
+            </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+            <label for="floatingPassword" class="form-label">Password</label>
+        </div>
+        <div>
+            <input type="hidden" name="return_to" value="{{ return_to_value }}">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Log in">
+        <button onclick="window.location.href='{% url 'register' %}';" type="button" class="btn btn-secondary">Join</button>
+    </form>
+</div>
+
+{% endblock %}

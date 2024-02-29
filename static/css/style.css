@@ -1,0 +1,120 @@
+#buttons button {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#buttons button:hover {
+    background: #ef615d;
+    color: white;
+}
+
+#lists {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+main {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+header {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#login {
+    margin-top: 15%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#insert_table {
+    margin-right: 30%;
+}
+
+#insert_table div div {
+    width: 70%;
+}
+
+nav ul span {
+    text-align: justify;
+    margin-right: 1%;
+    margin-left: 1%;
+    padding-top: 5px;
+}
+
+#nav_row #ul_row {
+    padding-left: 8%;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.clickable-row:hover {
+    background-color: #ef615d;
+}
+
+.clickable-row:active {
+    background-color: red;
+    transform: scale(0.99);
+}
+
+#cont {
+    padding-left: 8%;
+    padding-right: 8%;
+    margin-left: 0%;
+    margin-right: 0%;
+    max-width: none;
+}
+
+svg {
+    cursor: pointer;
+}
+
+h2 span {
+    margin-right: 2%;
+    padding-bottom: 1%;
+}
+
+.form_wrapper {
+    display: inline-flex;
+    align-items: center;
+    max-width: 500px;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.order-form p {
+    display: inline-flex;
+    align-items: center;
+    max-width: 120px;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.order-form p label {
+    display: none;
+}
+
+#label {
+    display: inline-flex;
+    align-items: center;
+    max-width: 125px;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}

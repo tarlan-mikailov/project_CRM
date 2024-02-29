@@ -1,0 +1,40 @@
+{% extends 'staffapp/staff_main.html' %}
+
+{% block create_schedule %}
+<a href="{% url 'create_schedule' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Add schedule</span>
+</a>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+   {% csrf_token %}
+    <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
+        <div class="row mb-3">
+            <label for="first_name" class="col-lg-3 col-form-label">Date</label>
+            <div class="col-sm-4">
+            {{ form.date }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="last_name" class="col-lg-3 col-form-label">Staff</label>
+            <div class="col-sm-4">
+            {{ form.id_staff }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="phone" class="col-lg-3 col-form-label">Start time</label>
+            <div class="col-sm-4">
+            {{ form.start_time }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="email" class="col-lg-3 col-form-label">End time</label>
+            <div class="col-sm-4">
+            {{ form.end_time }}
+            </div>
+        </div>
+    </div>
+   <input id="submit" type="submit" value="Submit" class="btn btn-success">
+</form>
+{% endblock %}

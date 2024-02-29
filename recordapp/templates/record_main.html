@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Records</title>
+{% endblock %}
+
+{% block record %}
+<a class="nav-link active" aria-current="page" href="{% url 'create_record' %}">Record</a>
+{% endblock %}
+
+{% block container %}
+<section>
+    <article>
+        <h2>Make a record</h2>
+        <div class="row">
+            <div class="col-lg-6 ">
+                <form method="POST" id="form">
+                {% csrf_token %}
+                <p>
+                    <label for="first_name">Client:</label>
+                    {{ form.id_client }}
+                </p>
+                <p>
+                    <label for="reservation_date">Reservation date:</label>
+                    {{ form.date }}
+                </p>
+            
+                <p>
+                    <label for="reservation_slot">Reservation time:</label>
+                    <select id="reservation_slot" name="time_slot" class="form-select">
+                        <option value="0" disabled>Select time</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="reservation_date">Staff:</label>
+                    {{ form.id_staff }}
+                </p>
+                <p>
+                    <label for="reservation_date">Price:</label>
+                    {{ form.price }}
+                </p>
+                <p>
+                    <label for="reservation_date">Service:</label>
+                    {{ form.id_service }}
+                </p>
+                <button class="btn btn-success mt-2" type="button" id="button">Reserve</button>
+                </form>
+            </div>
+
+            <div class="col-lg-6 shadow-lg p-3 mb-4 bg-body-tertiary">
+                <h2>Records for <span id="today"></span></h2>
+                    <div id="records">
+                    </div>
+            </div>
+        </div>
+
+    </article>
+</section>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/records.js' %}"></script>
+{% endblock %}

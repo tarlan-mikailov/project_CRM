@@ -1,0 +1,16 @@
+{% extends 'serviceapp/service_main.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
+        <div class="row mb-3">
+            <label for="resource" class="col-lg-3 col-form-label">Resources</label>
+            <div class="col-sm-4">
+            {{ form.resource }}
+            </div>
+        </div>
+    </div>
+    <input id="submit" type="submit" value="Submit" class="btn btn-success">
+</form>
+{% endblock %}

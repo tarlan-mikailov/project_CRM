@@ -1,0 +1,51 @@
+{% extends 'inventory_main.html' %}
+
+{% block ord_table %}
+<a href="{% url 'OrderList' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Orders</span>
+</a>
+{% endblock %}
+
+{% block content %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}        
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link">Previous</a></li>
+        {% endif %}
+        
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+        
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link">Next</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
+    <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Staff</th>
+        <th>Discount</th>
+        <th>Total price</th>
+        <th>Amount</th>
+    </tr>
+    {% for item in object_list %}
+    <tr class='clickable-row' onclick="window.location='{% url 'OrderDetail' item.id %}'">
+        <td>{{item.date| date:"d-m-Y / H:i"}}</td>
+        <td>{{item.id_commodity.name}}</td>
+        <td>{{item.id_employee.first_name}} {{item.id_employee.last_name}}</td>
+        <td>{{item.discount|default:"0" }} %</td>
+        <td>$ {{item.total_price}}</td>
+        <td>{{item.amount}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

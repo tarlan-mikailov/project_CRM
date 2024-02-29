@@ -1,0 +1,47 @@
+{% extends 'staffapp/staff_main.html' %}
+
+{% block all_staff %}
+<a href="{% url 'all_staff' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Staff</span>
+</a>
+{% endblock %}
+
+{% block content %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link">Previous</a></li>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link">Next</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Job title</th>
+        <th>User name</th>
+    </tr>
+    {% for item in object_list %}
+    <tr class='clickable-row' onclick="window.location='{% url 'staff_detail' item.pk %}'">
+        <td>{{ item.first_name }}</td>
+        <td>{{ item.last_name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.groups.get }}</td>
+        <td>{{ item.username }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

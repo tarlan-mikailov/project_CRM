@@ -1,0 +1,6 @@
+{% extends 'inventory_main.html' %}
+
+{% block content %}
+<p class="alert alert-success">Data submited successfuly</p>
+<button onclick="window.location.href='{% url 'OrderCreate' %}';" type="button" class="btn btn-primary">Add another comodity</button>
+{% endblock %}

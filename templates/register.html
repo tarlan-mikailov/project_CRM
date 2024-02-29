@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<h1>Create an account</h1>
+<p>Please, sign up using the following form:</p>
+<form action="" method="post">
+    <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
+        <div class="row mb-3">
+            <label for="username" class="col-lg-3 col-form-label">Username</label>
+            <div class="col-sm-4">
+            {{ user_form.username }}
+            {% csrf_token %}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="first_name" class="col-lg-3 col-form-label">First name</label>
+            <div class="col-sm-4">
+            {{ user_form.first_name }}
+            {% csrf_token %}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="last_name" class="col-lg-3 col-form-label">Last name</label>
+            <div class="col-sm-4">
+            {{ user_form.last_name }}
+            {% csrf_token %}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="email" class="col-lg-3 col-form-label">Email</label>
+            <div class="col-sm-4">
+            {{ user_form.email }}
+            {% csrf_token %}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="password" class="col-lg-3 col-form-label">Password</label>
+            <div class="col-sm-4">
+            {{ user_form.password }}
+            {% csrf_token %}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="password" class="col-lg-3 col-form-label">Repeat password</label>
+            <div class="col-sm-4">
+            {{ user_form.password2 }}
+            {% csrf_token %}
+            </div>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Create my account">
+</form>
+{% endblock %}

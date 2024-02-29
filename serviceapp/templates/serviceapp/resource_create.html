@@ -1,0 +1,28 @@
+{% extends 'serviceapp/service_main.html' %}
+
+{% block create_resource %}
+<a href="{% url 'create_resource' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Add resource</span>
+</a>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
+        <div class="row mb-3">
+            <label for="name" class="col-lg-3 col-form-label">Name</label>
+            <div class="col-sm-4">
+            {{ form.name }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="amount" class="col-lg-3 col-form-label">Amount</label>
+            <div class="col-sm-4">
+            {{ form.amount }}
+            </div>
+        </div>
+    </div>
+    <input id="submit" type="submit" value="Submit" class="btn btn-success">
+</form>
+{% endblock %}

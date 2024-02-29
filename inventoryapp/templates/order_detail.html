@@ -1,0 +1,20 @@
+{% extends 'inventory_main.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-7 shadow-lg p-3 mb-4 bg-body-tertiary">
+        <h1>{{object.date}}</h1>
+        <p>Commodity: {{object.id_commodity}}</p>
+        <p>Staff: {{object.id_employee}}</p>
+        <p>Amount: {{object.amount}}</p>
+        <p>Discount: {{object.discount}}</p>
+    </div>
+</div>
+{% if perms.inventoryapp.change_order %}
+    <button onclick="window.location.href='{% url 'OrderUpdate' object.id %}';" type="button" class="btn btn-primary">Update order</button>
+{% endif %}
+{% if perms.inventoryapp.delete_order %}
+    <button onclick="window.location.href='{% url 'OrderDelete' object.id %}';" type="button" class="btn btn-danger">Delete order</button>
+{% endif %}
+
+{% endblock %}

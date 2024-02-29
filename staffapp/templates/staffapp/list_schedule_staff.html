@@ -1,0 +1,38 @@
+{% extends 'staffapp/staff_main.html' %}
+
+{% block bt_all %}
+<button onclick="window.location.href='{% url 'all_staff' %}';" type="button" class="btn btn-secondary">All Staff</button>
+{% endblock %}
+
+{% block content %}
+<h2>
+   {{ data_staff.first_name }} {{ data_staff.last_name }}
+</h2>
+
+<form method="get">
+    <div class="form_wrapper form-row">
+        <div class="col-auto">
+            {{ form_filter.date }}
+        </div>
+        <div class="col-auto">
+            {{ form_filter.date }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button onclick="window.location.href='{% url 'schedule_staff' data_staff.pk %}';" type="button" class="btn btn-primary">Reset</button>
+    </div>
+</form>
+<table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
+    <tr>
+        <th>Date</th>
+        <th>Start time</th>
+        <th>End time</th>
+    </tr>
+    {% for item in data_schedule %}
+    <tr class='clickable-row' onclick="window.location='{% url 'schedule_detail' item.pk %}'">
+        <td>{{ item.date|date:"d b Y" }}</td>
+        <td>{{ item.start_time|time:"H:i" }}</td>
+        <td>{{ item.end_time|time:"H:i" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

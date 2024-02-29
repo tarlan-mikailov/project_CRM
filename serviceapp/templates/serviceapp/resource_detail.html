@@ -1,0 +1,22 @@
+{% extends 'serviceapp/service_main.html' %}
+
+{% block resource %}
+<button onclick="window.location.href='{% url 'list_resource' %}';" type="button" class="btn btn-primary">All resource</button>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="shadow-lg p-3 mb-4 bg-body-tertiary">
+            <h2>{{ detail_resource.name }}</h2>
+            <p>Amount: {{ detail_resource.amount }}</p>
+        </div>
+    </div>
+</div>
+{% if perms.serviceapp.update_resource %}
+    <button onclick="window.location.href='{% url 'update_resource' object.id %}';" type="button" class="btn btn-primary">Update resource</button>
+{% endif %}
+{% if perms.serviceapp.delete_service %}
+    <button onclick="window.location.href='{% url 'delete_resource' object.id %}';" type="button" class="btn btn-danger">Delete resource</button>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'inventory_main.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-4 shadow-lg p-3 mb-4 bg-body-tertiary">
+        <h1>{{object.name}}</h1>
+        <p>Price: {{object.price}}</p>
+        <p>Amount: {{object.amount}}</p>
+    </div>
+</div>
+{% if perms.inventoryapp.change_commodity %}
+    <button onclick="window.location.href='{% url 'CommodityUpdate' object.id %}';" type="button" class="btn btn-primary">Update commodity</button>
+{% endif %}
+{% if perms.inventoryapp.delete_commodity %}
+    <button onclick="window.location.href='{% url 'CommodityDelete' object.id %}';" type="button" class="btn btn-danger">Delete commodity</button>
+{% endif %}
+{% endblock %}
